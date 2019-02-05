@@ -1,0 +1,38 @@
+VALUE_MIN = -10
+VALUE_MAX = 10
+
+VALUE_ALERT_EMPTY = 999
+
+
+def matriceFromFile():
+    f = open('in_file.txt', 'r')
+    mat = {}
+    i = 5;
+    y = 0;
+    for line in f:
+        for word in line.split():
+            mat[(y, i)] = word
+            y += 1
+        y = 0
+        i -= 1
+
+    return mat
+
+matrice = matriceFromFile()
+
+def empty(matrice):
+    for value in matrice:
+        if matrice[value] == "X" or matrice[value] == "O":
+            return False
+    return True
+
+
+
+def fromStateToValue(matrice):
+    if empty(matrice):
+        return VALUE_ALERT_EMPTY
+
+
+
+print(empty(matrice))
+
